@@ -1,4 +1,4 @@
-﻿FROM microsoft/dotnet:sdk AS build-env
+FROM microsoft/dotnet:sdk AS build-env
 WORKDIR /app
 
 # Copy csproj and restore as distinct layers
@@ -9,8 +9,5 @@ RUN dotnet restore
 COPY . ./
 RUN dotnet publish -c Release -o out
 
-# Build runtime image
-FROM microsoft/dotnet:aspnetcore-runtime
-WORKDIR /app
-COPY --from=build-env /app/out .
-ENTRYPOINT ["dotnet", "aspnetapp.dll"]
+
+ENTRYPOINT ["dotnet", "/app/out/Team5_factory.dll"]
