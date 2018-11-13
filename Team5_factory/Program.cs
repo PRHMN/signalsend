@@ -39,7 +39,7 @@ private const string EventHubName = "ehteam5eh1";
         // Creates an event hub client and sends 100 messages to the event hub.
         private static async Task SendMessagesToEventHub(int numMessagesToSend)
         {
-            for (var i = 0; i < numMessagesToSend; i++)
+            while (true)
             {
                 try
                 {
